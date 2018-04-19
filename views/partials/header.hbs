@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">GeeksHubs Travels</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#sectionDestinos">Destinos <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#sectionQuienes">Quienes somos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Localización</a>
+            </li>
+            <!--Dropdown-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Usuarios
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {{#if conectado}}
+                        <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+                    {{else}}
+                        <a class="dropdown-item" href="/login">Iniciar Sesión</a>
+                    {{/if}}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/registro">Registro</a>
+                </div>
+            </li>
+            <!--Fin Dropdown-->
+        </ul>
+        {{#if email}}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bienvenido, {{email}}</a>
+                </li>
+            </ul>
+        {{/if}}
+    </div>
+    <div id="redesSociales" class="d-flex flex-row order-2 order-lg-3">
+        <ul id="rsociales" class="collapse navbar-collapse navbar-nav flex-row">
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fab fa-facebook-f"></span></a></li>
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fab fa-twitter"></span></a></li>
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fab fa-youtube"></span></a></li>
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fab fa-linkedin"></span></a></li>
+        </ul>
+    </div>
+</nav>

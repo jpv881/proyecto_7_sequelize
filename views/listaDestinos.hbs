@@ -1,0 +1,45 @@
+<section id="seccionListaDestinos">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <a href="/admin/crear-destino" class="btn btn-primary btn-sm">Nuevo Destino</a>
+            </div>
+            <div class="row" class="rowTable">
+                {{#if travels.length}}
+                    <table class="table table-sm">
+                        <tr>
+                            <td>Destino</td>
+                            <td>Descripción</td>
+                            <td>Tipo</td>
+                            <td>Precio</td>
+                            <td>Activo</td>
+                            <td>Imagen</td>
+                            <td>Editar</td>
+                            <td>Eliminar</td>
+                        </tr>
+                        {{#each travels}}
+                            <tr>
+                                <td>{{travel}}</td>
+                                <td>{{description}}</td>
+                                <td>{{type}}</td>
+                                <td>{{price}}</td>
+                                <td>
+                                    {{#if active}}
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    {{else}}
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    {{/if}}
+                                </td>
+                                <td><img src="{{path}}" alt="{{travel}}" class="detalleImagen"></td>
+                                <td><a href="/admin/abrir-destino/{{id}}"><i class="far fa-edit edit"
+                                                                             aria-hidden="true"></i></a></td>
+                                <td><a href="/admin/eliminar-destino/{{id}}"><i class="far fa-trash-alt remove"
+                                                                                aria-hidden="true"></i></a></td>
+                            </tr>
+                        {{/each}}
+                    </table>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>

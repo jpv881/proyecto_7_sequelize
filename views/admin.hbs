@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Website Tutorial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="shortcut icon" type="image/png" href="http://localhost:3000/public/favicon.ico.html"/>-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="bower_components/components-font-awesome/css/fontawesome.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="/stylesheets/style.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/components/bootstrap/dist/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script  src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+</head>
+<body>
+{{> header }}
+<div id="fondoAdmin">
+
+{{{body}}}
+</div>
+{{> footer }}
+<script src="/components/jquery/dist/jquery.min.js"></script>
+<script src='/components/bootstrap/dist/js/bootstrap.min.js'></script>
+<script>
+    $(window).scroll(function () {
+        if ($("#menu").offset().top > 56) {
+            $("#menu").addClass("bg-dark");
+        } else {
+            $("#menu").removeClass("bg-dark");
+        }
+    });
+</script>
+</body>
+</html>

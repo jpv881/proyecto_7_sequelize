@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,500');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400');
+
+@media only screen and (max-width: 991.98px) {
+    #redesSociales {
+        display: none !important;
+    }
+}
+
+#sectionInicio{
+    /*background-image: url("../images/vegas.jpg");*/
+    background-image: url("../images/comienzo.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    //background-attachment: fixed;
+    height: 100vh;
+    max-width: 100vw;
+}
+
+#sectionQuienes{
+    background-image: url("../images/dusk.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+//background-attachment: fixed;
+    height: 100vh;
+    max-width: 100vw;
+}
+
+#sectionLogin {
+    background-image: url("../images/beach.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+#sectionRegistro {
+    background-image: url("../images/venice.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+.alert.alert-danger {
+    display: none;
+}
+
+.fa-user,
+.fa-user-plus {
+    font-size: 2.3em;
+    color: #343a40;
+    margin-bottom: 0.3em;
+}
+
+#formLogin div:nth-child(1){
+    //text-align: center;
+    //margin-bottom: 0.5em;
+}
+
+nav.navbar-expand-lg {
+    position: fixed;
+    width: 100vw;
+    top: 0px;
+    //background-color: transparent !important;
+    background-color: rgba(0,0,0,0.3) !important;
+    z-index: 100;
+}
+
+.card {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 20%);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.top3em {
+    position: relative;
+    top: 3.2em;
+}
+
+/* footer */
+
+footer {
+    background-color: black;
+    padding-top: 10px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8em;
+}
+
+footer a, footer p{
+    color: white;
+}
+
+footer a:hover{
+    color: #676767;
+
+}
+
+footer .col-md-4 {
+    text-align: center;
+}
+
+.footerTitle {
+    font-size: 1.3em;
+    margin-bottom: 0px;
+}
+
+footer p {
+    font-weight: normal;
+}
+
+#textoAyuda a {
+    text-decoration: none;
+}
+
+#divDatos p{
+    font-family: 'Lato', sans-serif;
+}
+
+#copyRight {
+    text-align: center;
+    border-top: solid 1px white;
+    color: white;
+    padding: 15px 0px;
+    margin-top: 10px;
+}
+
+
+footer input {
+    background-color: black;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-bottom: solid 1.5px white;
+    color: white;
+    padding: 0px 5px;
+}
+
+footer button {
+    font-size: 0.8em !important;
+}
+
+#contacto input {
+    /*border-top: transparent;*/
+    /*border-right: transparent;*/
+    /*border-left: transparent;*/
+    /*border-bottom: solid 1.5px #ced4da;*/
+    border: transparent;
+    padding: 0px 5px;
+    width: 100%;
+//background-color: transparent;
+}
+
+#contacto textarea {
+    /*border-bottom: solid 1.5px #ced4da !important;*/
+    /*background-color: transparent;*/
+    border: transparent;
+}
+
+#contacto textarea,
+#contacto input {
+    background-color: rgba(255,255,255,0.8);
+    font-weight: bold;
+}
+
+footer input::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+footer button {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+footer button:hover,
+#divDatos button:hover{
+    color: #565656 !important;
+}
+
+#contacto {
+//padding: 40px 0;
+}
+
+#divDatos,
+#divForm {
+//background-color: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 5px;
+//margin-top: 15px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+*:focus{
+    outline: none !important;
+}
+
+ input.form-control.inputError{
+    border-color:red;
+}
+
+#contacto button {
+    border: solid 2px white;
+    color:#747474;
+    font-weight: bold;
+    background-color: rgba(255,255,255,0.8);
+}
+
+#contacto button:hover {
+    background-color:black;
+    color: white;
+}
+
+#divDatos div {
+    background-color: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#contacto input {
+    border-radius: 5px;
+}
+
+
+/* fin footer*/
+
+/* 404*/
+
+#sectionNotFound {
+    background-image: url("../images/consolar.gif");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    max-width: 100vw;
+    background-color: black;
+    height: 100vh;
+}
+
+
+#divNotFound {
+    color: white;
+}
+
+#cuatroCeroCuatro{
+    text-align: center;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4em;
+}
+
+#divNotFound div {
+    text-align: center;
+}
+
+#divNotFound > div {
+    //width: 50vw;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+#divTexto1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5em;
+}
+
+#divNotFound a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5em;
+    padding: 0.2em;
+    border: solid;
+}
+
+#btnVuelta {
+    margin-top: 2em;
+}
+
+/* fin 404*/
+
+/* error input*/
+.inputError {
+    //background-color: rgba(255,2,2,0.5);
+    border: solid 1px red;
+}
+/* error input*/
+
+.emailError {
+    color: red;
+    font-size: 1.3em;
+}
+
+.dropdown-menu {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown-menu a {
+    color:white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+#rsociales {
+    padding-right: 1em;
+}
+
+#sectionInicio .wrapper .container-fluid {
+    padding: 0px;
+}
+
+.carousel img{
+    max-height: 100vh;
+}
+
+#sectionDestinos{
+    height: 100vh;
+}
+
+#seccionViajes {
+    background-color: #6c757d;
+    padding-top: 71px;
+}
+
+.fa-edit:hover{
+    cursor: pointer;
+}
+
+.fa-edit{
+    color: #ef8c10;
+}
+
+.fa-trash-alt {
+    color: red;
+}
+
+.fa-trash-alt:hover {
+    cursor: pointer;
+}
+
+.detalleImagen {
+    height: 2em;
+    width: 2em;
+}
+
+
+#seccionListaDestinos,
+#seccionFormEditar,
+#seccionListaUsuarios {
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+#fondoAdmin {
+    background-image: url("../images/cherry.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+
+}
+
+#seccionListaDestinos table,
+#seccionListaUsuarios table {
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+}
+
+#seccionFormEditar form,
+#seccionFormCrear form{
+    padding: 20px;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+}
+
+#divFormCrear {
+    min-height: 100vh;
+}
+
+#seccionFormEditar form h3,
+#seccionFormCrear form h3{
+    text-align: center;
+}
+
+.fa-check {
+    color: #00cc00;
+}
+
+.fa-times {
+    color: crimson;
+}
+
+.smFileInput {
+    padding: .1rem .1rem;
+}
+
+#seccionListaUsuarios table td {
+    padding: .3rem .9rem;
+    //display: flex;
+    //justify-content: center;
+}
+
+#seccionListaUsuarios table  {
+    width: auto;
+}
+
+.fa-envelope:hover,
+.fa-retweet:hover {
+    cursor: pointer;
+}
+
+.fa-envelope {
+    color: #FAFEF0;
+}
+
+.fa-retweet {
+    color: #F8CEE6;
+}

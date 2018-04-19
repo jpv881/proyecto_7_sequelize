@@ -1,0 +1,36 @@
+<section id="sectionLogin">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="col-md-6 col-xs-10 mx-auto top3em">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- form -->
+                        <form id="formLogin" action="/login/autenticar" method="post">
+                            <div>
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" placeholder="Email" class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="password" placeholder="Password"
+                                       class="form-control form-control-sm">
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="emailError">
+                                    {{#if erroresLogin}}
+                                        Credenciales incorrectas.
+                                    {{/if}}
+                                </span>
+                                <button type="submit" class="btn btn-dark btn-sm">Iniciar Sesion</button>
+                            </div>
+                        </form>
+                        <div class="alert alert-danger">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

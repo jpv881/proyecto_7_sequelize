@@ -1,0 +1,22 @@
+{
+  "name": "actividad-4",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Javier Pérez <jpv881@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jpv881/actividad_4",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  }
+}
