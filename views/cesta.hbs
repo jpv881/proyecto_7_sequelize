@@ -1,0 +1,65 @@
+<section id="seccionCesta">
+    <div class="wrapper">
+        <div class="container">
+            <div>
+                <h1>Cesta</h1>
+            </div>
+            <div>
+                <table class="table table-sm">
+                    <tr id="trCabecera">
+                        <td>
+                            DESTINO
+                        </td>
+                        <td>
+                            DESCRIPCIÓN
+                        </td>
+                        <td>
+                            VIAJEROS
+                        </td>
+                        <td>
+                            PRECIO
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                {{#if cesta.length}}
+                    {{#each cesta}}
+                        <tr>
+                            <td>
+                                {{travel}}
+                            </td>
+                            <td>
+                                {{description}}
+                            </td>
+                            <td>
+                                <a href="/incrementar-viajeros/{{id}}"><i class="fas fa-plus"></i></a><span class="spanViajeros">{{viajeros}}</span>&nbsp;<i class="fas fa-male"></i><i class="fas fa-male"></i><a
+                                    href="/decrementar-viajeros/{{id}}"><i class="fas fa-minus"></i></a>
+                            </td>
+                            <td>
+                                <span class="spanPrecioViaje">{{price}}</span><span class="spanEuro">&euro;</span>
+                            </td>
+                            <td>
+                                <a href="/eliminar-viaje/{{id}}"><i class="far fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{/if}}
+                </table>
+                {{#if cesta.length}}
+                    <div id="divPrecios">
+                        <div id="divTotal">
+                            <span class="spanPrecioViaje">{{precios.total}}</span><span class="spanEuro">&euro;</span>
+                        </div>
+                        <div id="divIva">
+                            <span class="spanIva">IVA 21% </span><span class="spanPrecioViaje">{{precios.iva}}</span><span class="spanEuro">&euro;</span>
+                        </div>
+                        <div id="divTotal">
+                            <span class="spanIva">Total con IVA</span><span class="spanPrecioViaje">{{precios.totalIva}}</span><span class="spanEuro">&euro;</span>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>

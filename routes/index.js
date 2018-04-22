@@ -5,6 +5,7 @@ let usersModel = require('../models/usersModel');
 let bcrypt = require('../helpers/crypto');
 var controladorUsuarios = require('../controllers/controladorUsuarios');
 var controladorViajes = require('../controllers/controladorViajes');
+var controladorCesta = require('../controllers/controladorCesta');
 
 /* GET home page. */
 // router.get('/', function (req, res, next) {
@@ -36,5 +37,20 @@ router.get('/activar-usuario', controladorUsuarios.activarUsuario);
 
 router.get('/cambiar-contraseña', controladorUsuarios.cambiar);
 
+router.get('/ver-destino/:id', controladorViajes.verViaje);
 
+router.get('/comprar/:id', controladorViajes.comprarViaje);
+
+router.get('/cesta', controladorCesta.verCesta);
+
+router.get('/incrementar-viajeros/:id', controladorCesta.incrementar);
+
+router.get('/decrementar-viajeros/:id', controladorCesta.decrementar);
+
+router.get('/eliminar-viaje/:id', controladorCesta.eliminar);
+
+//para borrar
+router.get('/sesion', (req, res, next) => {
+    res.status(200).json(req.session);
+});
 module.exports = router;

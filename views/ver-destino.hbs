@@ -1,0 +1,23 @@
+<section id="seccionVerdestino">
+    <div class="wrapper">
+        <div class="container-fluid">
+            {{#if result}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="divImagenViaje">
+                            <img src="{{result.path}}" class="img-fluid" alt="{{travel}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1>{{result.travel}}</h1>
+                        <p>{{result.description}}</p>
+                        <div>
+                            <span>{{result.price}}&euro;</span>
+                        </div>
+                        <a href="/comprar/{{result.id}}">Añadir a la cesta</a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

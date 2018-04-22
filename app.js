@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var paginate = require('express-paginate');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
@@ -13,6 +14,8 @@ var notFoundRouter = require('./routes/notFound');
 
 var app = express();
 
+//uso de middleware
+app.use(paginate.middleware(2,20));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -21,6 +24,7 @@ var hbs = require('hbs');
 hbs.registerPartials(`${__dirname}/views/partials`);
 var hbsUtils = require('hbs-utils')(hbs);
 hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`);
+require('./helpers/hbs')(hbs);
 
 app.use(session({
     secret: 'clavesecreta',
@@ -40,11 +44,6 @@ app.use('/components', express.static(`${__dirname}/public/components`));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-// app.use('/login', loginRouter);
-// app.use('/registro', registroRouter);
-// app.use('/insertar-usuario', insertarUsuarioRouter);
-// app.use('/autenticar-usuario', autenticarUsuarioRouter);
-//app.use('/usuarios', usuarios);
 app.use('/*', notFoundRouter);
 
 // catch 404 and forward to error handler

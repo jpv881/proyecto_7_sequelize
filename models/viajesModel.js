@@ -1,40 +1,60 @@
 let conn = require('../connection/mysqlconnection');
-let Viajes = {};
+//let Viajes = {};
+const CONNECTOR = require('../config/connector');
+const SEQUELIZE = require('sequelize');
 
-Viajes.fetchAll = (cb)=>{
-    if(!conn) return cb("Error en la conexión");
-    let sql = 'select * from travels';
-    conn.query(sql, (error, rows)=>{
-        if(error) return cb(error);
-        else return cb(null, rows);
-    })
+const Viaje = CONNECTOR.define('travels', {
+    travel: {
+        type: SEQUELIZE.STRING
+    },
+    description: {
+        type: SEQUELIZE.STRING
+    },
+    active: {
+        type: SEQUELIZE.BOOLEAN
+    },
+    price: {
+        type: SEQUELIZE.DOUBLE
+    },
+    type: {
+        type: SEQUELIZE.STRING
+    },
+    path: {
+        type: SEQUELIZE.STRING
+    }
+});
+
+Viaje.fetchAll = (cb)=>{
+    Viaje.findAll().then(viajes=>{
+        return cb(null, viajes);
+    }).error(err=>{
+        return cb(err);
+    });
 }
 
 //Borrar destinos
-Viajes.deleteTravel = (id, cb) => {
-    if (!conn) return cb("Error en la conexión");
-    conn.query("delete FROM travels WHERE id=?", id, function (error, result) {
-        if (error) return cb(error);
-        else {
-            conn.query("DELETE FROM travel WHERE id=?", id, function () {
-                if (error) return cb(error);
-                return cb(null, result);
-            })
+Viaje.deleteTravel = (id, cb) => {
+
+    Viaje.destroy({
+        where: {
+            id: id
         }
+    }).then(result=>{console.log(result);
+        return cb(null, result);
+    }).error(err=>{
+        return cb(err);
     })
 }
 
 //Recoger un destino por id
-Viajes.fetchSingleById = (id, cb) => {
-    if (!conn) return cb("Error en la conexión");
-    else {
-        conn.query("SELECT * FROM travels WHERE id=?", [id], (error, result) => {
-            if (error) return cb(error);
-            else return cb(null, result);
-        })
-    }
+Viaje.fetchSingleById = (id, cb) => {
+    Viaje.findAll({where: {id: id}}).then(viajes=>{
+        return cb(null, viajes);
+    }).error(err=>{
+        return cb(err);
+    });
 }
-
+/*
 Viajes.updateTravel = (travel, cb)=>{
     var active;
     travel.active === 'on' ? active = true : active = false;
@@ -47,16 +67,32 @@ Viajes.updateTravel = (travel, cb)=>{
         if(err) return cb(err);
         else return cb(null, result);
     });
+}*/
+
+Viaje.insertViaje = (travel, cb)=>{
+    Viaje.create(travel).then(createdTravel=>{
+        return cb(null, createdTravel);
+    }).error(error=>{
+        return cb(error);
+    });
 }
 
-Viajes.insertViaje = (travel, cb)=>{
-    if (!conn) return cb("Error en la conexión");
-    else {
-        conn.query('INSERT INTO travels SET ?', travel, (error, result) => {
-            if (error) return cb(error);
-            else return cb(null, result);
-        })
+Viaje.paginate = (offset, limit, cb)=>{
+    if(conn){
+        conn.query("select * from travels limit ?, ?", [offset, limit], (error, rows)=>{
+            if(error){
+                return cb(error);
+            }else{
+                conn.query("select count(*) as total from travels", (error, count)=>{
+                    if(error){
+                        return cb(error);
+                    }else{
+                        return cb(null, {count,rows});
+                    }
+                })
+            }
+        });
     }
-}
+};
 
-module.exports = Viajes;
+module.exports = Viaje;

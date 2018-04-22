@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#sectionDestinos">Destinos <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/#sectionDestinos">Destinos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#sectionQuienes">Quienes somos</a>
+                <a class="nav-link" href="/#sectionQuienes">Quienes somos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Localización</a>
+                <a class="nav-link" href="/#">Localización</a>
             </li>
             <!--Dropdown-->
             <li class="nav-item dropdown">
@@ -42,6 +42,11 @@
             </ul>
         {{/if}}
     </div>
+    {{#if numViajes}}
+        <span id="spanCarrito">
+        <a href="/cesta"><i class="fas fa-shopping-cart"></i></a> <span id="spanCantidadCarrito">{{numViajes}}</span>
+        </span>
+    {{/if}}
     <div id="redesSociales" class="d-flex flex-row order-2 order-lg-3">
         <ul id="rsociales" class="collapse navbar-collapse navbar-nav flex-row">
             <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fab fa-facebook-f"></span></a></li>
