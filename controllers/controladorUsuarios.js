@@ -41,35 +41,33 @@ exports.autenticar = (req, res, next)=>{
             if(bcrypt.compare(USUARIO.password, usuario[0].password)){
                 errores = false;
 
-                if(usuario[0].tipo === 1) req.session.rol = 1;
+                if(usuario[0].tipo === 1){
+                    req.session.rol = 1;
+                    req.session.email = USUARIO.email;
+                }
                 else{
                     req.session.rol = 0;
+                    req.session.email = USUARIO.email;
                 }
-
-                var conectado;
-                if(req.session.rol) conectado = true;
-                else conectado = false;
             }
         }
 
 
 
         if(errores){
-            template = 'login';
-            layout = 'layoutSinFooter';
+            res.render('login', {
+                title: 'Agencia Viajes',
+                layout: 'layoutSinFooter',
+                email: USUARIO.email,
+                erroresLogin: errores,
+            });
         }else{
             template = 'destinos';
             layout = 'layout';
             if( req.session.rol === 1) res.redirect('/admin');
+            res.redirect('/');
         }
 
-        res.render(template, {
-            title: 'Agencia Viajes',
-            layout: layout,
-            email: USUARIO.email,
-            erroresLogin: errores,
-            conectado: conectado
-        });
     });
 }
 

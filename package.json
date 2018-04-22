@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "bcrypt": "^1.0.3",
     "cookie-parser": "^1.4.3",
     "debug": "~2.6.9",
@@ -21,7 +22,8 @@
     "mysql2": "^1.5.3",
     "nodemailer": "^4.6.4",
     "nodemailer-express-handlebars": "^3.0.0",
-    "sequelize": "^4.37.6"
+    "sequelize": "^4.37.6",
+    "winston": "^2.4.2"
   },
   "devDependencies": {
     "hbs-utils": "0.0.4",

@@ -1,7 +1,13 @@
 var viajesModel = require('../models/viajesModel');
 const paginate = require('express-paginate');
+//var winston = require('../config/winston');
 
 exports.inicio = (req, res, next) => {
+    //winston.debug("Local de login-flash");
+    var conectado;
+    if(req.session.rol === 1 || req.session.rol === 0) conectado = true;
+    else conectado = false;
+    if(req.session.rol) conectado = true;
     let numViajes = 0;
     if (req.session.cesta) numViajes = req.session.cesta.length;
     viajesModel.fetchAll((error, viajes) => {
@@ -11,6 +17,8 @@ exports.inicio = (req, res, next) => {
                 title: 'Agencia Viajes',
                 layout: 'layout',
                 numViajes: numViajes,
+                conectado: conectado,
+                email: req.session.email,
                 viajes
             });
         }
@@ -18,12 +26,17 @@ exports.inicio = (req, res, next) => {
 }
 
 exports.verTodos = (req, res, next) => {
+    var conectado;
+    if(req.session.rol === 1 || req.session.rol === 0) conectado = true;
+    else conectado = false;
+    if(req.session.rol) conectado = true;
+
     let page = (parseInt(req.query.page) || 1) - 1;
     let limit = 10;
     let offset = page * limit;
-    /*if (req.session.rol === 0 || req.session.rol === undefined) {
+    if (req.session.rol === 0 || req.session.rol === undefined) {
         res.redirect('/');
-    } else {*/
+    } else {
     viajesModel.paginate(offset, limit, (error, travels) => {
         if (error) {
             return res.status(500).send(error);
@@ -40,10 +53,12 @@ exports.verTodos = (req, res, next) => {
             currentPage,
             links: pagination,
             hasNext: paginate.hasNextPages(pageCount),
+            email: req.session.email,
+            conectado: conectado,
             pageCount
         });
     })
-    //}
+    }
 };
 
 // exports.verTodos = (req, res, next) => {

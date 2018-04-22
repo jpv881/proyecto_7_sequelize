@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var paginate = require('express-paginate');
+var winston = require('./config/winston');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
@@ -34,7 +35,8 @@ app.use(session({
 }));
 
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
+//app.use(logger('combined', { stream: winston.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
