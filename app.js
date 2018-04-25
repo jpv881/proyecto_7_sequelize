@@ -6,6 +6,8 @@ var logger = require('morgan');
 var session = require('express-session');
 var paginate = require('express-paginate');
 var winston = require('./config/winston');
+const Flash = require('connect-flash');
+const Passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
@@ -33,6 +35,14 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(Flash);
+
+app.use(Passport.initialize());
+app.use(Passport.session());
+app.use((req,res,next)=>{
+    res.locals.user = req.user;
+    next();
+})
 
 
 // app.use(logger('dev'));

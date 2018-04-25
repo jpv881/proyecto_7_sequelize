@@ -471,6 +471,10 @@ footer button:hover,
     align-items: center;
 }
 
+#divImagenViaje img {
+    border-radius: 5px;
+}
+
 #seccionCesta .fa-plus {
     margin-right: 1em;
     color: #4bbac9;
@@ -542,3 +546,25 @@ footer button:hover,
 #spanCantidadCarrito {
     color: white;
 }
+
+.infoViaje > div{
+    padding-top: 1em;
+    height: 100%;
+}
+
+.infoViaje h1{
+    color:#9a8686;
+}
+
+.card-body{
+    padding: 0.5rem;
+}
+
+.infoViaje .divPrecioViaje{
+    margin-top: 3em;
+}
+/*.divPrecioViaje{*/
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    /*margin-bottom: 2em;*/
+/*}*/

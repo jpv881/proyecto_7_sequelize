@@ -8,13 +8,17 @@
                             <img src="{{result.path}}" class="img-fluid" alt="{{travel}}">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <h1>{{result.travel}}</h1>
-                        <p>{{result.description}}</p>
+                    <div class="col-md-6 infoViaje">
                         <div>
-                            <span>{{result.price}}&euro;</span>
+                            <h1>{{result.travel}}</h1>
+                            <h6>{{result.description}}</h6>
+                            <div>
+                                <span class="spanPrecioViaje">{{result.price}}&euro;</span>
+                            </div>
+                            <div class="divPrecioViaje">
+                                <a class="btn btn-outline-primary btn-sm" href="/comprar/{{result.id}}">Añadir a la cesta</a>
+                            </div>
                         </div>
-                        <a href="/comprar/{{result.id}}">Añadir a la cesta</a>
                     </div>
                 </div>
             {{/if}}

@@ -26,49 +26,49 @@ exports.registro = (req, res, next)=>{
 };
 
 exports.autenticar = (req, res, next)=>{
-    const USUARIO = {
-        "email": req.body.email,
-        "password": req.body.password
-    };
-
-    Usuario.getUsuarioByEmail(USUARIO.email, (error, usuario)=>{
-        if(error) return res.status(500).json(error);
-        let errores = true;
-        let template = '';
-        let layout = '';
-
-        if(usuario.length > 0){
-            if(bcrypt.compare(USUARIO.password, usuario[0].password)){
-                errores = false;
-
-                if(usuario[0].tipo === 1){
-                    req.session.rol = 1;
-                    req.session.email = USUARIO.email;
-                }
-                else{
-                    req.session.rol = 0;
-                    req.session.email = USUARIO.email;
-                }
-            }
-        }
-
-
-
-        if(errores){
-            res.render('login', {
-                title: 'Agencia Viajes',
-                layout: 'layoutSinFooter',
-                email: USUARIO.email,
-                erroresLogin: errores,
-            });
-        }else{
-            template = 'destinos';
-            layout = 'layout';
-            if( req.session.rol === 1) res.redirect('/admin');
-            res.redirect('/');
-        }
-
-    });
+    // const USUARIO = {
+    //     "email": req.body.email,
+    //     "password": req.body.password
+    // };
+    //
+    // Usuario.getUsuarioByEmail(USUARIO.email, (error, usuario)=>{
+    //     if(error) return res.status(500).json(error);
+    //     let errores = true;
+    //     let template = '';
+    //     let layout = '';
+    //
+    //     if(usuario.length > 0){
+    //         if(bcrypt.compare(USUARIO.password, usuario[0].password)){
+    //             errores = false;
+    //
+    //             if(usuario[0].tipo === 1){
+    //                 req.session.rol = 1;
+    //                 req.session.email = USUARIO.email;
+    //             }
+    //             else{
+    //                 req.session.rol = 0;
+    //                 req.session.email = USUARIO.email;
+    //             }
+    //         }
+    //     }
+    //
+    //
+    //
+    //     if(errores){
+    //         res.render('login', {
+    //             title: 'Agencia Viajes',
+    //             layout: 'layoutSinFooter',
+    //             email: USUARIO.email,
+    //             erroresLogin: errores,
+    //         });
+    //     }else{
+    //         template = 'destinos';
+    //         layout = 'layout';
+    //         if( req.session.rol === 1) res.redirect('/admin');
+    //         res.redirect('/');
+    //     }
+    //
+    // });
 }
 
 exports.insertar = (req, res, next)=>{
