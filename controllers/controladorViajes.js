@@ -1,9 +1,9 @@
 var viajesModel = require('../models/viajesModel');
 const paginate = require('express-paginate');
-//var winston = require('../config/winston');
+var winston = require('../config/winston');
 
 exports.inicio = (req, res, next) => {
-    //winston.debug("Local de login-flash");
+    winston.debug("Local de login-flash");
     var conectado;
     if(req.session.rol === 1 || req.session.rol === 0) conectado = true;
     else conectado = false;

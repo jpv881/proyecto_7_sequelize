@@ -5,6 +5,8 @@ const Email = require('../config/emailConf');
 const Hbs = require('nodemailer-express-handlebars');
 var hbs = require('hbs');
 const Path = require('path'); //Módulo para registrar el path
+const PASSPORT = require('../helpers/passportHelper');
+
 
 exports.login = (req, res, next)=>{
     res.render('login', {
@@ -26,6 +28,9 @@ exports.registro = (req, res, next)=>{
 };
 
 exports.autenticar = (req, res, next)=>{
+    console.log("Entra en autenticar");
+    res.redirect('/');
+
     // const USUARIO = {
     //     "email": req.body.email,
     //     "password": req.body.password

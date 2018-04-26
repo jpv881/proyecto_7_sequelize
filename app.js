@@ -29,18 +29,9 @@ var hbsUtils = require('hbs-utils')(hbs);
 hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`);
 require('./helpers/hbs')(hbs);
 
-app.use(session({
-    secret: 'clavesecreta',
-    name: 'cookiedemiapp',
-    resave: true,
-    saveUninitialized: true
-}));
-app.use(Flash);
 
-app.use(Passport.initialize());
-app.use(Passport.session());
 app.use((req,res,next)=>{
-    res.locals.user = req.user;
+    res.locals.user= req.user;
     next();
 })
 
@@ -53,7 +44,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/components', express.static(`${__dirname}/public/components`));
+app.use(session({
+    secret: 'clavesecreta',
+    name: 'cookiedemiapp',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(Flash());
 
+app.use(Passport.initialize());
+app.use(Passport.session());
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/*', notFoundRouter);
