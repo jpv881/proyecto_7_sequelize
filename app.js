@@ -29,13 +29,6 @@ var hbsUtils = require('hbs-utils')(hbs);
 hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`);
 require('./helpers/hbs')(hbs);
 
-
-app.use((req,res,next)=>{
-    res.locals.user= req.user;
-    next();
-})
-
-
 // app.use(logger('dev'));
 //app.use(logger('combined', { stream: winston.stream }));
 app.use(express.json());
@@ -51,9 +44,14 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(Flash());
-
 app.use(Passport.initialize());
 app.use(Passport.session());
+
+app.use((req,res,next)=>{
+    res.locals.user= req.user;
+    next();
+})
+
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/*', notFoundRouter);

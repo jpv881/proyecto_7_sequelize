@@ -3,6 +3,13 @@ const paginate = require('express-paginate');
 var winston = require('../config/winston');
 
 exports.inicio = (req, res, next) => {
+    let usuario = {};
+    let tipo = 0;
+    usuario.email = '';
+    if(req.user !== undefined){
+        usuario = req.user.dataValues;
+        if(req.user.dataValues.tipo === 1) tipo = 1;
+    }
     winston.debug("Local de login-flash");
     var conectado;
     if(req.session.rol === 1 || req.session.rol === 0) conectado = true;
@@ -17,8 +24,8 @@ exports.inicio = (req, res, next) => {
                 title: 'Agencia Viajes',
                 layout: 'layout',
                 numViajes: numViajes,
-                conectado: conectado,
-                email: req.session.email,
+                email: usuario.email,
+                tipo: tipo,
                 viajes
             });
         }
@@ -26,15 +33,19 @@ exports.inicio = (req, res, next) => {
 }
 
 exports.verTodos = (req, res, next) => {
-    var conectado;
-    if(req.session.rol === 1 || req.session.rol === 0) conectado = true;
-    else conectado = false;
-    if(req.session.rol) conectado = true;
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) res.redirect('/');
+    let usuario = {};
+    let tipo = 0;
+    usuario.email = '';
+    if(req.user !== undefined){
+        usuario = req.user.dataValues;
+        if(req.user.dataValues.tipo === 1) tipo = 1;
+    }
 
     let page = (parseInt(req.query.page) || 1) - 1;
     let limit = 10;
     let offset = page * limit;
-    if (req.session.rol === 0 || req.session.rol === undefined) {
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) {
         res.redirect('/');
     } else {
     viajesModel.paginate(offset, limit, (error, travels) => {
@@ -54,31 +65,16 @@ exports.verTodos = (req, res, next) => {
             links: pagination,
             hasNext: paginate.hasNextPages(pageCount),
             email: req.session.email,
-            conectado: conectado,
+            email: usuario.email,
+            tipo: tipo,
             pageCount
         });
     })
     }
 };
 
-// exports.verTodos = (req, res, next) => {
-//     if (req.session.rol === 0 || req.session.rol === undefined) {
-//         res.redirect('/');
-//     } else {
-//         viajesModel.fetchAll((error, travels) => {
-//             if (error) return res.status(500).json(error);
-//             else {
-//                 res.render('listaDestinos', {
-//                     layout: 'admin',
-//                     title: 'Administracion',
-//                     travels
-//                 })
-//             }
-//         });
-//     }
-// };
-
 exports.eliminar = (req, res, next) => {
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) res.redirect('/');
     let id = req.params.id;
     viajesModel.deleteTravel(id, (error, result) => {
         if (error) return res.status(500).json(error);
@@ -89,6 +85,7 @@ exports.eliminar = (req, res, next) => {
 }
 
 exports.abrirViaje = (req, res, next) => {
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) res.redirect('/');
     let id = req.params.id;
     viajesModel.fetchSingleById(id, (error, result) => {
         if (result) {
@@ -120,12 +117,14 @@ exports.verViaje = (req, res, next) => {
 }
 
 exports.crearDestino = (req, res, next) => {
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) res.redirect('/');
     res.render('creacionDestino', {
         layout: 'admin',
     });
 };
 
 exports.editarViaje = (req, res, next) => {
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) res.redirect('/');
     var active;
     req.body.active === 'on' ? active = true : active = false;
 
@@ -148,6 +147,7 @@ exports.editarViaje = (req, res, next) => {
 }
 
 exports.insertDestino = (req, res, next) => {
+    if (req.user.dataValues.tipo === 0 || req.user.dataValues.tipo === undefined) res.redirect('/');
     var active;
     req.body.active === 'on' ? active = true : active = false;
 

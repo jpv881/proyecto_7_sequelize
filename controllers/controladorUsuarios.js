@@ -11,12 +11,13 @@ const PASSPORT = require('../helpers/passportHelper');
 exports.login = (req, res, next)=>{
     res.render('login', {
         title: 'Agencia Viajes',
-        layout: 'layoutSinFooter'
+        layout: 'layoutSinFooter',
     });
 };
 
 exports.logout = (req, res, next)=>{
-    req.session.destroy();
+    //req.session.destroy();
+    req.logout();
     res.redirect('/');
 };
 
@@ -28,7 +29,7 @@ exports.registro = (req, res, next)=>{
 };
 
 exports.autenticar = (req, res, next)=>{
-    console.log("Entra en autenticar");
+
     res.redirect('/');
 
     // const USUARIO = {
@@ -96,7 +97,7 @@ exports.insertar = (req, res, next)=>{
         } else {
             Usuario.insert(USUARIO, (error, insertID) => {
                 if (insertID) {
-console.log('hash en usuario al insertar '+USUARIO.hash);
+
                     res.redirect('/send?id='+insertID.insertId+'&email='+USUARIO.email+'&hash='+USUARIO.hash);
                     // res.redirect('/send/'+USUARIO.email+'/'+USUARIO.hash);
 
@@ -165,7 +166,7 @@ exports.activarUsuario = (req, res, next)=>{
 exports.enviarEmail = (req, res, next)=>{
     let id = req.query.id;
     let email = req.query.email;
-    let hash = req.query.hash;console.log('hash al crear el email '+hash);
+    let hash = req.query.hash;
     // let link = '<a href="http://localhost:3000/activar-usuario?id='+id+'&hash='+hash+'">Activar Usuario</a>';
     let link = 'http://localhost:3000/activar-usuario?id='+id+'&hash='+hash;
 

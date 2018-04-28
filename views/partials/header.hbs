@@ -16,6 +16,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/#">Localización</a>
             </li>
+            {{#if tipo}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Administración</a>
+                </li>
+            {{/if}}
             <!--Dropdown-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -23,7 +28,7 @@
                     Usuarios
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {{#if conectado}}
+                    {{#if email}}
                         <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
                     {{else}}
                         <a class="dropdown-item" href="/login">Iniciar Sesión</a>
